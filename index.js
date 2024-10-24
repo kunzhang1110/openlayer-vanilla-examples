@@ -68,7 +68,7 @@ const map = new ol.Map({
     new ol.layer.Tile({
       source: new ol.source.OSM(),
     }),
-    // wmsLayer,
+    wmsLayer,
     wfsLayer,
     wmsLayer2
   ],
