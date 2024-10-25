@@ -27,7 +27,7 @@ const wmsLayer2 = new ol.layer.Tile({
   source: new ol.source.TileWMS({
     url: "http://localhost:8080/geoserver/wms", // URL of your GeoServer WMS service
     params: {
-      LAYERS: "MRC-Test:Moulamein", // Specify the workspace and layer name
+      LAYERS: "MRC-Test:Mathoura", // Specify the workspace and layer name
       TILED: true,
     },
     serverType: "geoserver",
@@ -48,7 +48,7 @@ const wmsLayer2 = new ol.layer.Tile({
 */
 const wfsLayer = new ol.layer.Vector({
   source: new ol.source.Vector({
-    url: "http://localhost:8080/geoserver/MRC-Test/wfs?service=WFS&version=1.0.0&request=GetFeature&typeName=MRC-Test%3AYanga%20Lake&maxFeatures=50&outputFormat=application/json",
+    url: "http://localhost:8080/geoserver/MRC-Test/wfs?service=WFS&version=1.0.0&request=GetFeature&typeName=MRC-Test%3AMathoura&maxFeatures=50&outputFormat=application/json",
     format: new ol.format.GeoJSON(),
   }),
   style: new ol.style.Style({
@@ -70,7 +70,7 @@ const map = new ol.Map({
     }),
     wmsLayer,
     wfsLayer,
-    wmsLayer2
+    // wmsLayer2
   ],
   view: new ol.View({
     center: ol.proj.fromLonLat([143.5504, -35.3393]),
@@ -92,7 +92,7 @@ map.on("click", function (event) {
   }
 
   if (found) {
-    alert("Feature found at this location! with zStyle: " + found.getProperties().zStyle);
+    alert("Feature found at this location! with zStyle: " + found.getProperties().zData);
   } else {
     alert("No features found at this location.");
   }
